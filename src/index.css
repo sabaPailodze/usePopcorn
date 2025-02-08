@@ -30,7 +30,6 @@ body {
 
   color: var(--color-text);
   background-color: var(--color-background-900);
-  padding: 2.4rem;
 }
 
 /* ******* */
@@ -147,8 +146,6 @@ body {
 .btn-delete:hover {
   background-color: var(--color-red-dark);
 }
-
-/* ******* */
 
 .summary {
   padding: 2.2rem 3.2rem 1.8rem 3.2rem;

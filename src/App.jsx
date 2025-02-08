@@ -1,18 +1,20 @@
 import { useState } from "react";
-import Header from "./Components/Header/Header";
-import Main from "./Components/Main/Main";
-import Loader from "./Components/Loader/Loader";
+import Loader from "./Components/Atoms/Loader/Loader";
+import Header from "./Components/Organisms/Header/Header";
+import Main from "./Components/Organisms/Main/Main";
 
 export default function App() {
+  const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState("");
   return (
-    <>
-      <Header />
-      <Main />
-    </>
+    <div className="container m-auto p-5">
+      <Header movies={movies} query={query} setQuery={setQuery} />
+      <Main movies={movies} setMovies={setMovies} query={query} />
+    </div>
   );
 }
 
-// star rating კომპონენტსი იმმპორტი თავისი პროპსებით
+// star rating კომპონენტსი იმპორტი თავისი პროპსებით
 
 {
   /* <StarRating
