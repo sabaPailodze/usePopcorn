@@ -1,43 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Loader from "../../Atoms/Loader/Loader.jsx";
-import MovieList from "../../Atoms/MovieList/MovieList.jsx";
-import ErrorMessage from "../../Atoms/ErrorMessage/ErrorMessage.jsx";
 import FetchedMovies from "../../Molecules/FetchedMovies/FetchedMovies.jsx";
 import WatchedMovies from "../../Molecules/WatchedMovies/WatchedMovies.jsx";
 import tempWatchedData from "../../../assets/tempWatchedData.json";
 const Main = ({ movies, setMovies, query }) => {
-  // const tempWatchedData = [
-  //   {
-  //     imdbID: "tt1375666",
-  //     Title: "Inception",
-  //     Year: "2010",
-  //     Poster:
-  //       "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-  //     runtime: 148,
-  //     imdbRating: 8.8,
-  //     userRating: 10,
-  //   },
-  //   {
-  //     imdbID: "tt0088763",
-  //     Title: "Back to the Future",
-  //     Year: "1985",
-  //     Poster:
-  //       "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-  //     runtime: 116,
-  //     imdbRating: 8.5,
-  //     userRating: 9,
-  //   },
-  // ];
-
   const average = (arr) => {
     return arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
   };
 
-  const [watched, setWatched] = useState(tempWatchedData);
+  function handleSelectMovie(id) {
+    setSelectedId((selectedId) => (id === selectedId ? null : id));
+  }
 
+  function handleCloseMovie() {
+    setSelectedId(null);
+  }
+
+  const [watched, setWatched] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
+  const KEY = "78b2ea7c";
 
   //   async function fetchData() {
   //     try {
@@ -65,13 +48,22 @@ const Main = ({ movies, setMovies, query }) => {
   return (
     <main className="mt-[40px] h-[80vh] flex justify-center gap-10">
       {/* მარცხენა დივი სადაც რენდერდება ფილმები  */}
-      <FetchedMovies movies={movies} setMovies={setMovies} query={query} />
+      <FetchedMovies
+        movies={movies}
+        setMovies={setMovies}
+        query={query}
+        handleSelectMovie={handleSelectMovie}
+        KEY={KEY}
+      />
       {/* მარჯვენა დივი სადაც დაფავორიტებული ფილმებია */}
       <WatchedMovies
         watched={watched}
         avgImdbRating={avgImdbRating}
         avgUserRating={avgUserRating}
         avgRuntime={avgRuntime}
+        selectedId={selectedId}
+        handleCloseMovie={handleCloseMovie}
+        KEY={KEY}
       />
     </main>
   );

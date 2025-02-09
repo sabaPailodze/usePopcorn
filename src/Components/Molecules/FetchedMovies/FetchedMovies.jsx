@@ -4,11 +4,16 @@ import MovieList from "../../Atoms/MovieList/MovieList";
 import ErrorMessage from "../../Atoms/ErrorMessage/ErrorMessage";
 import Button from "../../Atoms/Button/Button";
 
-const FetchedMovies = ({ movies, setMovies, query }) => {
+const FetchedMovies = ({
+  movies,
+  setMovies,
+  query,
+  handleSelectMovie,
+  KEY,
+}) => {
   const [isOpen1, setIsOpen1] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const KEY = "78b2ea7c";
 
   console.log("Fetched movies in FetchedMovies:", movies);
 
@@ -28,7 +33,6 @@ const FetchedMovies = ({ movies, setMovies, query }) => {
         console.log("API Response:", data);
 
         setMovies(data.Search);
-        console.log(data);
       } catch (error) {
         console.error(error);
         setError(error.message);
@@ -51,7 +55,9 @@ const FetchedMovies = ({ movies, setMovies, query }) => {
       {/* if isLoading is true im rendering loader component */}
       {isLoading && <Loader />}
       {/* if isLoading and error is false im rendering movielist component */}
-      {!isLoading && !error && isOpen1 && <MovieList movies={movies} />}
+      {!isLoading && !error && isOpen1 && (
+        <MovieList movies={movies} handleSelectMovie={handleSelectMovie} />
+      )}
       {/* if error is true im rendering error message */}
       {error && <ErrorMessage message={error} />}
     </div>
