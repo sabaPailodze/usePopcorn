@@ -4,6 +4,7 @@ import MovieDetails from "../../Atoms/MovieDetails/MovieDetails";
 
 const WatchedMovies = ({
   watched,
+  setWatched,
   avgImdbRating,
   avgUserRating,
   avgRuntime,
@@ -12,6 +13,12 @@ const WatchedMovies = ({
   KEY,
 }) => {
   const [isOpen2, setIsOpen2] = useState(true);
+  function addWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
+  }
+  function deleteWatched(id) {
+    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
+  }
   return (
     <div className="bg-[#2b3035] w-[42rem] max-w-[42rem] rounded-[14px] overflow-scroll relative">
       <Button isOpen={isOpen2} setIsOpen={setIsOpen2} />
@@ -21,6 +28,8 @@ const WatchedMovies = ({
             selectedId={selectedId}
             handleCloseMovie={handleCloseMovie}
             KEY={KEY}
+            addWatched={addWatched}
+            watched={watched}
           />
         ) : (
           <>
@@ -29,15 +38,15 @@ const WatchedMovies = ({
               <div>
                 <p>
                   <span>#️⃣</span>
-                  <span>{watched.length} movies</span>
+                  <span className="text-center">{watched.length} movies</span>
                 </p>
                 <p>
                   <span>⭐️</span>
-                  <span>{avgImdbRating}</span>
+                  <span>{avgImdbRating.toFixed(2)}</span>
                 </p>
                 <p>
                   <span>🌟</span>
-                  <span>{avgUserRating}</span>
+                  <span>{avgUserRating.toFixed(2)}</span>
                 </p>
                 <p>
                   <span>⏳</span>
@@ -48,8 +57,8 @@ const WatchedMovies = ({
             <ul className="list">
               {watched.map((movie) => (
                 <li key={movie.imdbID}>
-                  <img src={movie.Poster} alt={`${movie.Title} poster`} />
-                  <h3>{movie.Title}</h3>
+                  <img src={movie.poster} alt={`${movie.title} poster`} />
+                  <h3>{movie.title}</h3>
                   <div>
                     <p>
                       <span>⭐️</span>
@@ -63,6 +72,12 @@ const WatchedMovies = ({
                       <span>⏳</span>
                       <span>{movie.runtime} min</span>
                     </p>
+                    <button
+                      className="btn-delete"
+                      onClick={() => deleteWatched(movie.imdbID)}
+                    >
+                      X
+                    </button>
                   </div>
                 </li>
               ))}

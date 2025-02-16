@@ -9,6 +9,7 @@ const FetchedMovies = ({
   setMovies,
   query,
   handleSelectMovie,
+  handleCloseMovie,
   KEY,
 }) => {
   const [isOpen1, setIsOpen1] = useState(true);
@@ -18,12 +19,14 @@ const FetchedMovies = ({
   console.log("Fetched movies in FetchedMovies:", movies);
 
   useEffect(() => {
+    const controller = new AbortController();
     async function fetchData() {
       try {
         setIsLoading(true);
         setError("");
         const request = await fetch(
-          `https://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `https://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+          { signal: controller.signal }
         );
         if (!request.ok) {
           throw new Error("something went wrong with fetching movies");
@@ -33,9 +36,13 @@ const FetchedMovies = ({
         console.log("API Response:", data);
 
         setMovies(data.Search);
+        setError("");
       } catch (error) {
         console.error(error);
-        setError(error.message);
+
+        if (error.name !== "AbortError") {
+          setError(error.message);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +53,11 @@ const FetchedMovies = ({
       setError("");
       return;
     }
+    handleCloseMovie();
     fetchData();
+    return function () {
+      controller.abort();
+    };
   }, [query]);
 
   return (

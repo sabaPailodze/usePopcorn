@@ -1,11 +1,11 @@
 import React from "react";
 
-function Star({ onClick, full, onMouseIn, onMouseOut, color }) {
+function Star({ full, onMouseIn, onMouseOut, color, onRate }) {
   return (
     <span
       role="button"
       className="cursor-pointer w-[25px] h-[25px]"
-      onClick={onClick}
+      onClick={onRate}
       onMouseOver={onMouseIn}
       onMouseLeave={onMouseOut}
     >

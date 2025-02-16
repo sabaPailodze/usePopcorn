@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import Star from "../Star/Star";
 
-function StarRating({ maxRating = 5, color = "#fcc419", messages = [] }) {
-  const [rating, setRating] = useState(0);
+function StarRating({
+  maxRating = 5,
+  color = "#fcc419",
+  messages = [],
+  defaultRating = 0,
+  setUserRating,
+  userRating,
+}) {
+  const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
+
+  function handleRating(rating) {
+    setRating(rating);
+    setUserRating(rating);
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -12,7 +24,7 @@ function StarRating({ maxRating = 5, color = "#fcc419", messages = [] }) {
           {Array.from({ length: maxRating }, (_, i) => (
             <Star
               key={i}
-              onClick={() => setRating(i + 1)}
+              onRate={() => handleRating(i + 1)}
               full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
               onMouseIn={() => setTempRating(i + 1)}
               onMouseOut={() => setTempRating(0)}
@@ -26,7 +38,9 @@ function StarRating({ maxRating = 5, color = "#fcc419", messages = [] }) {
             : tempRating || rating || ""}
         </p>
       </div>
-      <p className="text-[22px]">This movie was rated {rating} stars</p>
+      {userRating > 0 && (
+        <p className="text-[22px]">This movie was rated {rating} stars</p>
+      )}
     </div>
   );
 }
