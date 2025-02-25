@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import Loader from "./Components/Atoms/Loader/Loader";
 import Header from "./Components/Organisms/Header/Header";
 import Main from "./Components/Organisms/Main/Main";
-import StarRating from "./Components/Atoms/StarRating/StarRating";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
