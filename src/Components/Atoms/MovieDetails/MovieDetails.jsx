@@ -81,31 +81,40 @@ const MovieDetails = ({
   }, [title]);
 
   return (
-    <div className="details">
+    <div className="leading-[1.4] text-[1.4rem]">
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <header>
-            <button onClick={handleCloseMovie} className="btn-back">
+          <header className="flex">
+            <button
+              onClick={handleCloseMovie}
+              className="absolute top-[0.6rem] left-[0.6rem] h-[3.2rem] aspect-square rounded-full border-none bg-white text-[#2b3035] shadow-[0_8px_20px_rgba(0,0,0,0.8)] font-sans text-[2.2rem] font-bold cursor-pointer z-[999] flex items-center justify-center"
+            >
               &larr;
             </button>
-            <img src={poster} alt={`Poster of ${movie} movie`} />
-            <div className="details-overview">
-              <h2>{title}</h2>
-              <p>
+            <img
+              src={poster}
+              alt={`Poster of ${movie} movie`}
+              className="w-[33%]"
+            />
+            <div className="w-full p-[2.4rem_3rem] bg-[#343a40] flex flex-col gap-[1.4rem]">
+              <h2 className="text-[2.4rem] mb-[0.4rem] leading-[1.1]">
+                {title}
+              </h2>
+              <p className="flex items-center gap-3">
                 {released} &bull; {runtime}
               </p>
-              <p>{genre}</p>
-              <p>
+              <p className="flex items-center gap-3">{genre}</p>
+              <p className="flex items-center gap-3">
                 <span>⭐️</span>
                 {imdbRating}
                 IMDB Rating
               </p>
             </div>
           </header>
-          <section>
-            <div className="rating">
+          <section className="p-[4rem] flex flex-col gap-[1.6rem]">
+            <div className="bg-[#343a40] rounded-[0.9rem] p-[2rem_2.4rem] mb-3 font-semibold flex flex-col gap-8">
               {!isWatched ? (
                 <>
                   <StarRating
@@ -114,7 +123,10 @@ const MovieDetails = ({
                     userRating={userRating}
                   />
                   {userRating > 0 && (
-                    <button className="btn-add" onClick={handleAdd}>
+                    <button
+                      className="bg-[#6741d9] text-[#dee2e6] border-none rounded-[10rem] text-[1.4rem] p-4 font-bold cursor-pointer transition-all duration-300 hover:bg-[#7950f2]"
+                      onClick={handleAdd}
+                    >
                       + Add to list
                     </button>
                   )}
