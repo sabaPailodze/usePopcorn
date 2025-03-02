@@ -6,7 +6,7 @@ export default function App() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   useEffect(() => {
-    document.title = "UsePopcorn 🍿";
+    document.title = "UsePopcorn";
   }, []);
   return (
     <div className="container m-auto p-5">

@@ -39,7 +39,7 @@ function StarRating({
         </p>
       </div>
       {userRating > 0 && (
-        <p className="text-[22px]">This movie was rated {rating} stars</p>
+        <p className="text-[21px]">This movie was rated {rating} stars</p>
       )}
     </div>
   );

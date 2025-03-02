@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FetchedMovies from "../../Molecules/FetchedMovies/FetchedMovies.jsx";
 import WatchedMovies from "../../Molecules/WatchedMovies/WatchedMovies.jsx";
+import { useLocalStorage } from "../../../hooks/useLocalStorage.jsx";
 
 const Main = ({ movies, setMovies, query }) => {
   const average = (arr) => {
@@ -15,7 +16,7 @@ const Main = ({ movies, setMovies, query }) => {
     setSelectedId(null);
   }
 
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useLocalStorage([], "watched");
   const [selectedId, setSelectedId] = useState(null);
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));

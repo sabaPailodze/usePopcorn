@@ -33,24 +33,30 @@ const WatchedMovies = ({
           />
         ) : (
           <>
-            <div className="summary">
-              <h2>Movies you watched</h2>
-              <div>
-                <p>
+            <div className="p-[2.2rem_3.2rem_1.8rem_3.2rem] rounded-[0.9rem] bg-[#343a40] shadow-[0_1.2rem_2.4rem_rgba(0,0,0,0.2)] flex flex-col gap-2.5">
+              <h2 className="uppercase text-[1.6rem]">Movies you watched</h2>
+              <div className="flex items-center gap-6 text-[1.6rem] font-semibold">
+                <p className="flex items-center gap-2">
                   <span>#️⃣</span>
-                  <span className="text-center">{watched.length} movies</span>
+                  <span className="text-center flex gap-2">
+                    <span>{watched.length}</span>
+                    <span>movies</span>
+                  </span>
                 </p>
-                <p>
+                <p className="flex items-center gap-2">
                   <span>⭐️</span>
                   <span>{avgImdbRating.toFixed(2)}</span>
                 </p>
-                <p>
+                <p className="flex items-center gap-2">
                   <span>🌟</span>
                   <span>{avgUserRating.toFixed(2)}</span>
                 </p>
-                <p>
+                <p className="flex items-center gap-2">
                   <span>⏳</span>
-                  <span>{avgRuntime} min</span>
+                  <span className="flex gap-2">
+                    <span>{avgRuntime.toFixed(2)}</span>
+                    <span> min</span>
+                  </span>
                 </p>
               </div>
             </div>
@@ -73,7 +79,7 @@ const WatchedMovies = ({
                       <span>{movie.runtime} min</span>
                     </p>
                     <button
-                      className="btn-delete"
+                      className="absolute right-10 h-7 aspect-square rounded-full border-none bg-[#fa5252] text-[#212529] text-sm font-bold cursor-pointer transition-all duration-300 hover:bg-[#e03131]"
                       onClick={() => deleteWatched(movie.imdbID)}
                     >
                       X
