@@ -24,7 +24,7 @@ const Main = ({ movies, setMovies, query }) => {
   const KEY = "78b2ea7c";
 
   return (
-    <main className="mt-[40px] h-[80vh] flex justify-center gap-10">
+    <main className="h-[70vh] sm:h-[80vh] flex justify-center gap-2 sm:gap-10">
       {/* left div, its the side where films are fetching */}
       <FetchedMovies
         movies={movies}

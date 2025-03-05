@@ -62,7 +62,7 @@ const FetchedMovies = ({
   }, [query]);
 
   return (
-    <div className="bg-[#2b3035] w-[60vh] rounded-[14px] overflow-scroll relative">
+    <div className="bg-[#2b3035] w-[80vh] rounded-[14px] overflow-scroll relative">
       <Button isOpen={isOpen1} setIsOpen={setIsOpen1} />
       {/* if isLoading is true im rendering loader component */}
       {isLoading && <Loader />}

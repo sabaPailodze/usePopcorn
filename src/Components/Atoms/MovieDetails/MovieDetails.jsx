@@ -25,6 +25,13 @@ const MovieDetails = ({
     [handleCloseMovie]
   );
 
+  useEffect(() => {
+    const handleResize = () => setMaxRating(window.innerWidth < 550 ? 5 : 10);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
@@ -32,6 +39,9 @@ const MovieDetails = ({
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
+  const [maxRating, setMaxRating] = useState(() =>
+    window.innerWidth < 600 ? 5 : 10
+  );
 
   function handleAdd() {
     const newWatchedMovies = {
@@ -118,18 +128,18 @@ const MovieDetails = ({
               </p>
             </div>
           </header>
-          <section className="p-8 lg:p-14 flex flex-col gap-[1.6rem]">
-            <div className="bg-[#343a40] rounded-[0.9rem] p-[2rem_2.4rem] mb-3 font-semibold flex flex-col gap-8">
+          <section className="px-4 sm:px-8 py-10 flex flex-col gap-[1.6rem]">
+            <div className="bg-[#343a40] rounded-[0.9rem] p-4 xs:p-8 mb-3 font-semibold flex flex-col gap-8">
               {!isWatched ? (
                 <>
                   <StarRating
-                    maxRating={10}
+                    maxRating={maxRating}
                     setUserRating={setUserRating}
                     userRating={userRating}
                   />
                   {userRating > 0 && (
                     <button
-                      className="bg-[#6741d9] text-[#dee2e6] border-none rounded-[10rem] text-[1.4rem] p-4 font-bold cursor-pointer transition-all duration-300 hover:bg-[#7950f2]"
+                      className="bg-[#6741d9] text-[#dee2e6] border-none rounded-[10rem] text-[14px] xs:text-[16px] p-2 xs:p-4 font-bold cursor-pointer transition-all duration-300 hover:bg-[#7950f2]"
                       onClick={handleAdd}
                     >
                       + Add to list
@@ -137,17 +147,21 @@ const MovieDetails = ({
                   )}
                 </>
               ) : (
-                <p className="text-center">
-                  You've already rated this movie {watchedUserRating}
+                <p className="text-center text-[12px] xs:text-[16px]">
+                  <span className="pr-1">
+                    You've already rated this movie {watchedUserRating}
+                  </span>
                   <span>⭐️</span>
                 </p>
               )}
             </div>
-            <p>
-              <em>{plot}</em>
-            </p>
-            <p>Starring {actors}</p>
-            <p>Directed by {director}</p>
+            <span className="flex flex-col gap-8 text-[12px] sm:text-[14px] md:text-[16px]">
+              <p>
+                <em>{plot}</em>
+              </p>
+              <p>Starring: {actors}</p>
+              <p>Directed by {director}</p>
+            </span>
           </section>
         </>
       )}
