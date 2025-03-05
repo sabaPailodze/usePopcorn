@@ -19,7 +19,7 @@ function StarRating({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-3">
+      <div className="flex gap-3 justify-center">
         <div className="flex gap-1">
           {Array.from({ length: maxRating }, (_, i) => (
             <Star
@@ -39,7 +39,9 @@ function StarRating({
         </p>
       </div>
       {userRating > 0 && (
-        <p className="text-[21px]">This movie was rated {rating} stars</p>
+        <p className="text-[21px] text-center">
+          This movie was rated {rating} stars
+        </p>
       )}
     </div>
   );

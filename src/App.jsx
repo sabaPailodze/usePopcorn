@@ -9,9 +9,14 @@ export default function App() {
     document.title = "UsePopcorn";
   }, []);
   return (
-    <div className="container m-auto p-5">
+    <div className=" p-5">
       <Header movies={movies} query={query} setQuery={setQuery} />
       <Main movies={movies} setMovies={setMovies} query={query} />
     </div>
   );
 }
+
+// როდესაც rating - ის შევსებულ star - ს დავაჭერ მეორედ უნდა გაქრეს წინა
+//  დარეითებული (toggle), რამენაირად starRating უნდა გავხადო რესპონსივი,
+// ასევე ლისტში რომ დავამატებ მაგასაც გავუწერო რესპონსივი,
+// fetchMovies კომპონენტს გავუწერო რესპონსივი
