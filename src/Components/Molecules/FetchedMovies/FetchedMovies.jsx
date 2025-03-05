@@ -29,7 +29,8 @@ const FetchedMovies = ({
           { signal: controller.signal }
         );
         if (!request.ok) {
-          throw new Error("something went wrong with fetching movies");
+          const errorText = await request.text();
+          throw new Error(`Error: ${errorText}`);
         }
         const data = await request.json();
         if (data.Response === "False") throw new Error("Movie not found");
@@ -61,7 +62,7 @@ const FetchedMovies = ({
   }, [query]);
 
   return (
-    <div className="bg-[#2b3035] w-[42rem] max-w-[42rem] rounded-[14px] overflow-scroll relative">
+    <div className="bg-[#2b3035] w-[60vh] rounded-[14px] overflow-scroll relative">
       <Button isOpen={isOpen1} setIsOpen={setIsOpen1} />
       {/* if isLoading is true im rendering loader component */}
       {isLoading && <Loader />}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StarRating from "../StarRating/StarRating";
 import Loader from "../Loader/Loader";
+import { div } from "motion/react-m";
 
 const MovieDetails = ({
   selectedId,
@@ -83,10 +84,12 @@ const MovieDetails = ({
   return (
     <div className="leading-[1.4] text-[1.4rem]">
       {isLoading ? (
-        <Loader />
+        <div className="flex items-center justify-center h-[16.5vh]">
+          <Loader />
+        </div>
       ) : (
         <>
-          <header className="flex">
+          <header className="flex flex-col sm:flex-row">
             <button
               onClick={handleCloseMovie}
               className="absolute top-[0.6rem] left-[0.6rem] h-[3.2rem] aspect-square rounded-full border-none bg-white text-[#2b3035] shadow-[0_8px_20px_rgba(0,0,0,0.8)] font-sans text-[2.2rem] font-bold cursor-pointer z-[999] flex items-center justify-center"
@@ -96,24 +99,26 @@ const MovieDetails = ({
             <img
               src={poster}
               alt={`Poster of ${movie} movie`}
-              className="w-[33%]"
+              className="w-full max-sm:h-[30vh] sm:w-[40%]"
             />
-            <div className="w-full p-[2.4rem_3rem] bg-[#343a40] flex flex-col gap-[1.4rem]">
-              <h2 className="text-[2.4rem] mb-[0.4rem] leading-[1.1]">
+            <div className="w-full items-center xs:text-start sm:items-start justify-center py-6 md:py-0 px-2 sm:px-8 bg-[#343a40] flex flex-col gap-5">
+              <h2 className="text-[18px] text-center xs:text-[22px] mb-[0.4rem] leading-[1.1]">
                 {title}
               </h2>
-              <p className="flex items-center gap-3">
+              <p className="flex items-center text-center xs:text-start gap-3">
                 {released} &bull; {runtime}
               </p>
-              <p className="flex items-center gap-3">{genre}</p>
-              <p className="flex items-center gap-3">
+              <p className="flex items-center text-center xs:text-start gap-3">
+                {genre}
+              </p>
+              <p className="flex items-center text-center xs:text-start gap-3">
                 <span>⭐️</span>
                 {imdbRating}
                 IMDB Rating
               </p>
             </div>
           </header>
-          <section className="p-[4rem] flex flex-col gap-[1.6rem]">
+          <section className="p-8 lg:p-14 flex flex-col gap-[1.6rem]">
             <div className="bg-[#343a40] rounded-[0.9rem] p-[2rem_2.4rem] mb-3 font-semibold flex flex-col gap-8">
               {!isWatched ? (
                 <>

@@ -20,7 +20,7 @@ const WatchedMovies = ({
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
   return (
-    <div className="bg-[#2b3035] w-[42rem] max-w-[42rem] rounded-[14px] overflow-scroll relative">
+    <div className="bg-[#2b3035] w-[60vh] rounded-[14px] overflow-scroll relative">
       <Button isOpen={isOpen2} setIsOpen={setIsOpen2} />
       {isOpen2 &&
         (selectedId ? (
@@ -33,31 +33,37 @@ const WatchedMovies = ({
           />
         ) : (
           <>
-            <div className="p-[2.2rem_3.2rem_1.8rem_3.2rem] rounded-[0.9rem] bg-[#343a40] shadow-[0_1.2rem_2.4rem_rgba(0,0,0,0.2)] flex flex-col gap-2.5">
-              <h2 className="uppercase text-[1.6rem]">Movies you watched</h2>
-              <div className="flex items-center gap-6 text-[1.6rem] font-semibold">
-                <p className="flex items-center gap-2">
-                  <span>#️⃣</span>
-                  <span className="text-center flex gap-2">
-                    <span>{watched.length}</span>
-                    <span>movies</span>
-                  </span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <span>⭐️</span>
-                  <span>{avgImdbRating.toFixed(2)}</span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <span>🌟</span>
-                  <span>{avgUserRating.toFixed(2)}</span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <span>⏳</span>
-                  <span className="flex gap-2">
-                    <span>{avgRuntime.toFixed(2)}</span>
-                    <span> min</span>
-                  </span>
-                </p>
+            <div className="py-12 px-0 sm:px-11 rounded-[0.9rem] bg-[#343a40] shadow-[0_1.2rem_2.4rem_rgba(0,0,0,0.2)] flex flex-col gap-3 w-full">
+              <h2 className="uppercase text-[18px] sm:text-[20px] text-center md:text-start">
+                Movies you watched
+              </h2>
+              <div className="flex flex-col xs:flex-row items-center justify-center md:justify-start gap-6 text-[1.6rem] font-semibold">
+                <div className="flex flex-col md:flex-row gap-4 lg:gap-10">
+                  <p className="flex items-center justify-center gap-2">
+                    <span>#️⃣</span>
+                    <span className="text-center flex gap-2">
+                      <span>{watched.length}</span>
+                      <span>movies</span>
+                    </span>
+                  </p>
+                  <p className="flex justify-center gap-2">
+                    <span>⭐️</span>
+                    <span>{avgImdbRating.toFixed(2)}</span>
+                  </p>
+                </div>
+                <div className="flex flex-col md:flex-row gap-4 lg:gap-10">
+                  <p className="flex justify-center gap-2">
+                    <span>🌟</span>
+                    <span>{avgUserRating.toFixed(2)}</span>
+                  </p>
+                  <p className="flex justify-center gap-2">
+                    <span>⏳</span>
+                    <span className="flex gap-2">
+                      <span>{avgRuntime.toFixed(2)}</span>
+                      <span> min</span>
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
             <ul className="list">

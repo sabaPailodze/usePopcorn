@@ -4,7 +4,7 @@ function Star({ full, onMouseIn, onMouseOut, color, onRate }) {
   return (
     <span
       role="button"
-      className="cursor-pointer w-[25px] h-[25px]"
+      className="cursor-pointer w-[18px] md:w-[25px] h-[18px] md:h-[25px]"
       onClick={onRate}
       onMouseOver={onMouseIn}
       onMouseLeave={onMouseOut}
