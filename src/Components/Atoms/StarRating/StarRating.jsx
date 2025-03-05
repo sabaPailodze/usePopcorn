@@ -4,7 +4,6 @@ import Star from "../Star/Star";
 function StarRating({
   maxRating = 5,
   color = "#fcc419",
-  messages = [],
   defaultRating = 0,
   setUserRating,
   userRating,
@@ -12,9 +11,10 @@ function StarRating({
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
 
-  function handleRating(rating) {
-    setRating(rating);
-    setUserRating(rating);
+  function handleRating(selectedRating) {
+    const newRating = rating === selectedRating ? 0 : selectedRating;
+    setRating(newRating);
+    setUserRating(newRating);
   }
 
   return (
@@ -32,14 +32,9 @@ function StarRating({
             />
           ))}
         </div>
-        <p className={`text-[18px] text-center text-${color}`}>
-          {messages.length === maxRating
-            ? messages[tempRating ? tempRating - 1 : rating - 1]
-            : tempRating || rating || ""}
-        </p>
       </div>
       {userRating > 0 && (
-        <p className="text-[21px] text-center">
+        <p className="text-[16px] xs:text-[21px] text-center">
           This movie was rated {rating} stars
         </p>
       )}
