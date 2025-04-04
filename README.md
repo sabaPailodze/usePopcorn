@@ -1,5 +1,6 @@
 🍿 usePopcorn — Movie Discovery Platform
 
+![Neuro Landing Page](screenshots/usePopcorn.png)
 
 usePopcorn is a modern and responsive movie discovery platform built to explore, rate, and save your favorite movies. This project showcases my skills in building interactive web applications with a focus on user experience, API integration, and clean code.
 
