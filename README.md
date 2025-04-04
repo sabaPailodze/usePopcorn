@@ -1,8 +1,50 @@
-# React + Vite
+🍿 usePopcorn — Movie Discovery Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+usePopcorn is a modern and responsive movie discovery platform built to explore, rate, and save your favorite movies. This project showcases my skills in building interactive web applications with a focus on user experience, API integration, and clean code.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Highlights
+🎬 Movie Exploration: Search for any movie, view ratings, and add your own ratings using a public movie API.
+💾 Local Storage: Save your favorite movies and ratings directly in the browser's local storage.
+📱 Responsive Design: Fully responsive UI, optimized for mobile, tablet, and desktop devices.
+🚀 Deployed Live: The project is live on Vercel (or another platform, if applicable).
+🛠 Tech Stack
+React.js
+TypeScript
+Tailwind CSS
+JavaScript (ES6+)
+Public Movie API (e.g., OMDb API)
+Vercel for deployment
+📦 Features
+Search movies by title with real-time results
+Add movies to your favorites list
+View and add ratings for movies
+Persist favorites and ratings in local storage
+Mobile-first, fully responsive design
+Smooth and intuitive user interface
+🔗 Live Demo
+👉 View Project on Vercel
+
+Note: Update the link with the actual URL if deployed.
+
+👨‍💻 My Role
+I developed this project as a solo developer, focusing on:
+
+Integrating a public movie API for dynamic data fetching
+Building a responsive and user-friendly interface
+Implementing local storage for persisting user data
+Writing clean, type-safe code with TypeScript
+🧪 Getting Started
+To run usePopcorn locally, follow these steps:
+
+bash
+
+Collapse
+
+Wrap
+
+Copy
+git clone https://github.com/sabaPailodze/usepopcorn.git
+cd usepopcorn
+npm install
+npm run dev
