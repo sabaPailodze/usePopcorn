@@ -45,5 +45,10 @@ I developed this project as a **solo developer**, focusing on:
 
 ## 🧪 Getting Started (Optional)
 
-To run usePopcorn locally, follow these steps:
+```bash
+git clone https://github.com/sabaPailodze/usepopcorn.git
+cd usepopcorn
+npm install
+npm run dev
+
 
