@@ -14,7 +14,7 @@
 ## 🛠 Tech Stack
 
 - **React.js**
-- **TypeScript**
+- **JavaScript**
 - **Tailwind CSS**
 - **JavaScript (ES6+)**
 - **Vercel** for deployment
